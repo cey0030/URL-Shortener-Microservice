@@ -15,7 +15,7 @@ var app = express();
 var port = process.env.PORT || 3000;
 
 /** this project needs a db !! **/ 
-mongoose.connect("mongodb+srv://Clement:tirikatene@cluster0-yghgs.mongodb.net/Cluster0?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect("connectionurl", { useNewUrlParser: true, useUnifiedTopology: true })
 
 var Schema = mongoose.Schema
 var urlSchema = new mongoose.Schema({
