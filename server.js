@@ -17,6 +17,7 @@ var app = express();
 var port = process.env.PORT || 3000;
 
 /** this project needs a db !! **/ 
+// Start of challenge code 
 mongoose.connect(process.env.CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
 
 var Schema = mongoose.Schema
@@ -25,18 +26,22 @@ var urlSchema = new mongoose.Schema({
 })
 
 var Url = mongoose.model('Url', urlSchema)
+// End of challenge code 
 
 app.use(cors());
 
 /** this project needs to parse POST bodies **/
 // you should mount the body-parser here
+// Start of challenge code 
 app.use(bodyParser.urlencoded({ extended: false }));
+// End of challenge code 
 app.use('/public', express.static(process.cwd() + '/public'));
 
 app.get('/', function(req, res){
   res.sendFile(process.cwd() + '/views/index.html');
 });
-  
+
+// Start of challenge code 
 app.post('/api/shorturl/new/', function (req, res) {
   var long_url = req.body.url
 
@@ -66,6 +71,7 @@ app.get('/api/shorturl/new/:url_id?', function (req, res) {
     }
   })
 })
+// End of challenge code 
 
 app.listen(port, function () {
   console.log('Node.js listening ...');
