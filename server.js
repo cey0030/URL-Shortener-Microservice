@@ -5,6 +5,8 @@ var mongo = require('mongodb');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser')
 var dns = require('dns')
+var dotenv = require('dotenv')
+dotenv.config({ path: './config.env' })
 
 var cors = require('cors');
 const { Hash } = require('crypto');
@@ -15,7 +17,7 @@ var app = express();
 var port = process.env.PORT || 3000;
 
 /** this project needs a db !! **/ 
-mongoose.connect("connectionurl", { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
 
 var Schema = mongoose.Schema
 var urlSchema = new mongoose.Schema({
